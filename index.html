@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Search</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Set the body to at least 100% viewport height */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+        }
+
+        main {
+            flex: 1; /* Allow the main content to grow and take remaining space */
+            padding: 2em;
+        }
+
+        input {
+            padding: 0.5em;
+            margin: 0.5em;
+        }
+
+        #result {
+            margin-top: 1em;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 1em;
+        }
+
+        footer {
+            padding: 1em;
+            background-color: #333;
+            color: white;
+        }
+
+        .not-found {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Food Search</h1>
+    </header>
+    <main>
+        <label for="foodInput">Search for Food:</label>
+        <input type="text" id="foodInput" placeholder="Type a food name...">
+        <button onclick="searchFood()">Search</button>
+        <div id="result"></div>
+    </main>
+
+    <footer>
+        <p>This the project under ITCS443_Parallel and Distributed Systems</p>
+    </footer>
+
+    <script>
+        function searchFood() {
+            const userInput = document.getElementById("foodInput").value.toLowerCase();
+
+            // In a real application, you would perform an AJAX request here to fetch data from the backend
+            // For simplicity, let's assume we have a static data object
+            const foodData = {
+                name: "Pasta",
+                image: "pasta.jpeg" // Replace with the actual image URL
+            };
+
+            // Display the result or show "not found" message
+            const resultContainer = document.getElementById("result");
+            if (userInput === foodData.name.toLowerCase()) {
+                resultContainer.innerHTML = `<h2>${foodData.name}</h2><img src="${foodData.image}" alt="${foodData.name}">`;
+            } else {
+                resultContainer.innerHTML = '<p class="not-found">Food not found <span>&#10060;</span></p>';
+            }
+        }
+    </script>
+</body>
+</html>
